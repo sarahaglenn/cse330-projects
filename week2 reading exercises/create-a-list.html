@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=f, initial-scale=1.0">
+    <title>Create a list</title>
+</head>
+<body>
+    <h1>Your List</h1>
+    <script>
+        let list = document.createElement('ul');
+        document.body.append(list);
+        while (true) {
+            let item = prompt("What would you like to add to the list?");
+            if (!item) {
+                break
+            }
+            let li = document.createElement('li');
+            li.textContent = item;
+            list.append(li);
+        }
+    </script>
+</body>
+</html>

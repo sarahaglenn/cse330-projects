@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+</head>
+<body>
+    <div id="here"></div>
+    <script>
+        function createCalendar(elem, year, month) {
+            let table = "<table><tr><th>MON</th><th>TUES</th><th>WED</th><th>THURS</th><th>FRI</th><th>SAT</th><th>SUN</th></tr><tr>";
+            let mon = month - 1;
+            let date = new Date(year, mon);
+            for (let i = 0; i < getDay(date); i++) {
+                table += "<td></td>";
+            }
+            while (date.getMonth() == mon) {
+                table += `<td> ${date.getDate()} </td>`;
+                
+                if (getDay(date) % 7 == 6) {
+                    table += '</tr><tr>'
+                }
+                date.setDate(date.getDate() + 1);
+            }
+            if (getDay(date) !=0) {
+                for (let i = getDay(date); i < 7; i++) {
+                    table += '<td></td>';
+                }
+            }
+            table += '</tr></table>';
+            elem.innerHTML = table;
+        }
+        function getDay(date) {
+            let day = date.getDay();
+            if (day == 0) day = 7;
+            return day - 1;
+        }
+        let div = document.getElementById('here');
+        createCalendar(div, 2024, 1);
+
+
+
+        let inserts = '<li>2</li><li>3</li>';
+        let itemOne = document.getElementById('one');
+        itemOne.after(inserts);
+    </script>
+</body>
+</html>
+
+<!-- inserting items in a list
+    <ul id="ul">
+    <li id="one">1</li>
+    <li id="two">4</li>
+</ul>
+let inserts = '<li>2</li>
+<li>3</li>';
+let itemOne = document.getElementById('one');
+itemOne.after(inserts);
+
+
+one.insertAdjacentHTML('afterend', '<li>2</li>
+<li>3</li>'); -->
+
+first find all first children of the table rows in the body. 
+Then get the text elements and put them in a list

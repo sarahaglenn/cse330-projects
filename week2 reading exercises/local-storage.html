@@ -1,0 +1,17 @@
+<!doctype html>
+
+<body>
+
+    <textarea style="width:200px; height: 60px;" id="area" placeholder="Write here"></textarea>
+    <br>
+    <button onclick="localStorage.removeItem('currentText'); textArea.value = '';">Clear</button>
+    <script>
+        const textArea = document.getElementById('area');
+        textArea.value = localStorage.getItem('currentText') || '';
+
+        function update() {
+            localStorage.setItem('currentText', textArea.value);
+        }
+        textArea.addEventListener('input', update);
+    </script>
+</body>
